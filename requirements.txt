@@ -20,3 +20,7 @@ faiss-cpu                # 向量庫本體
 jupyter                  # notebook 本體
 
 # ⚠️ Windows 上 faiss-cpu 偶爾裝不起來 → 不影響 Lab 1/2；Lab 3 的 README 有 chromadb 替代方案
+
+# ── Lab 2 的 D 段（加映・選配）：商用 API 對照 ──
+# 只有想跑「Gemini vs 開源模型」那段才需要；不裝也不影響任何一個 Lab
+langchain-google-genai   # ChatGoogleGenerativeAI：呼叫 Gemini（key 免費辦：https://aistudio.google.com/apikey）
