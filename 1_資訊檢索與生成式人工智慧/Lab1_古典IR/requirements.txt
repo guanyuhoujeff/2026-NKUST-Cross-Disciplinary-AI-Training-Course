@@ -1,0 +1,9 @@
+# Lab1 古典 IR 依賴（練 A–C 只需前兩項；全程本機、不需網路/API）
+scikit-learn
+numpy
+
+# 練 D 中文斷詞（裝不起來可走 char n-gram Backup，見 README）
+jieba
+
+# 選做：BM25 附錄才用到，裝不起來直接跳過附錄
+rank_bm25

@@ -1,0 +1,22 @@
+# NKUST 2026 暑期新尖兵 — 課程 1 上機實作（三個 Lab 一次裝完）
+# 用法：在專案根目錄下  pip install -r requirements.txt
+
+# ── Lab 1 古典 IR（上午・不需網路/API）──
+scikit-learn             # TF-IDF、cosine 相似度
+numpy                    # 向量運算
+jieba                    # 中文斷詞（練 D）
+rank_bm25                # 選做：BM25 附錄才用到
+
+# ── Lab 2 第一支生成程式（下午）──
+langchain-ollama         # ChatOllama：呼叫 Ollama Cloud 生成
+requests                 # 環境自我檢查
+
+# ── Lab 3 最小 RAG（下午・重頭戲）──
+langchain-community      # FAISS 向量庫的 LangChain 包裝
+langchain-text-splitters # 把長文件切塊
+faiss-cpu                # 向量庫本體
+
+# ── 共用 ──
+jupyter                  # notebook 本體
+
+# ⚠️ Windows 上 faiss-cpu 偶爾裝不起來 → 不影響 Lab 1/2；Lab 3 的 README 有 chromadb 替代方案

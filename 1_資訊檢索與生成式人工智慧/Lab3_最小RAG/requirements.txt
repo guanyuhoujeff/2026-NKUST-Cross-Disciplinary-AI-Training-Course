@@ -1,0 +1,13 @@
+# Lab 3：最小 RAG
+# 安裝：pip install -r requirements.txt
+# （跟 Lab 2 是同一份清單——Lab 2 已經裝過就不用再裝）
+
+langchain-ollama         # OllamaEmbeddings（本機算向量）＋ ChatOllama（雲端生成）
+langchain-community      # FAISS 向量庫的 LangChain 包裝
+langchain-text-splitters # 把長文件切塊
+faiss-cpu                # 向量庫本體
+numpy                    # 算 cosine 相似度
+requests                 # 環境自我檢查（打 localhost:11434 看服務通不通）
+jupyter                  # notebook 本體
+
+# ⚠️ Windows 上 faiss-cpu 偶爾裝不起來 → 見 README「出事了怎麼辦」的 chromadb 替代方案

@@ -1,0 +1,12 @@
+# 學員本機產物
+.ipynb_checkpoints/
+__pycache__/
+.ruff_cache/
+*.pyc
+.venv/
+venv/
+
+# 🔒 絕對不要把 key 推上來
+ollama-apikey
+*.key
+.env
