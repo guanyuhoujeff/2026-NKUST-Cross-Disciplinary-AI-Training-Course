@@ -8,5 +8,7 @@ venv/
 
 # 🔒 絕對不要把 key 推上來
 ollama-apikey
+gemini-key
+*-key
 *.key
 .env

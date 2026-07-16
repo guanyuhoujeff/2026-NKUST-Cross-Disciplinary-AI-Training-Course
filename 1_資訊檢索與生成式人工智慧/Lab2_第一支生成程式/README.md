@@ -49,27 +49,17 @@ ollama pull bge-m3
 
 > ❌ 下載中斷 → 重跑同一行，會續傳。
 
-### 第 3 步：設定 Ollama Cloud API key（呼叫雲端的「門票」）
+### 第 3 步：拿一把 Ollama Cloud API key（呼叫雲端的「門票」）
 
-先到 **https://ollama.com/settings/keys** 建一把 key，整串複製，然後：
+到 **https://ollama.com/settings/keys** 建一把 key、整串複製起來，**先放著**——
+今天**不用設環境變數**（那步容易出錯）。等一下在 notebook 最上面的「檢查 2」那格，把 key 直接貼進引號中間就好：
 
-```bash
-# Mac / Linux
-export OLLAMA_API_KEY=你的key
-
-# Windows PowerShell
-$env:OLLAMA_API_KEY="你的key"
+```python
+os.environ["OLLAMA_API_KEY"] = "在這裡貼上你的 OLLAMA key"   # ← 把引號中間換成你的 key，再跑這一格
 ```
 
-確認有設進去（會印出你那串 key，不是空白）：
-
-```bash
-echo $OLLAMA_API_KEY            # Windows PowerShell：echo $env:OLLAMA_API_KEY
-```
-
-> ⚠️ **`=` 後面直接貼，前後不要留空格、不要加引號**——多一個空格就會 `KeyError`。
-> ⚠️ **環境變數只在「當前終端機視窗」有效**。換視窗、重開終端機就要重設。
-> ⚠️ **設好之後，要從那個視窗啟動 Jupyter**（或重開 kernel），notebook 才拿得到。
+> ⚠️ **整串貼進引號中間，前後不要多留空格**。
+> ⚠️ **貼了 key 的 notebook 別上傳 GitHub、別傳給別人、別截圖**——key 等於你帳號的鑰匙。
 > ❌ 註冊不了 / key 貼壞了 → 找講師拿共用 key。
 
 ### 第 4 步：裝套件（**一次裝齊 Lab 2 + Lab 3 要用的**）
@@ -97,13 +87,13 @@ ollama run gemma4:cloud "用一句繁體中文說明什麼是毛利率"
 
 ## ▶️ 開始
 
-從**設好 key 的那個終端機視窗**啟動：
+啟動 Jupyter：
 
 ```bash
 jupyter notebook
 ```
 
-打開 `Lab2_第一支生成程式_教學版.ipynb`，**從上往下一格一格跑**（不能跳著執行）。
+打開 `Lab2_第一支生成程式_教學版.ipynb`，**從上往下一格一格跑**（不能跳著執行）。第一次跑到「檢查 2」那格時，記得先把你的 OLLAMA key 貼進去（見第 3 步）。
 
 ---
 
@@ -111,9 +101,9 @@ jupyter notebook
 
 | 狀況 | 怎麼辦 |
 |---|---|
-| `KeyError: 'OLLAMA_API_KEY'` | key 沒設，或設完沒重開 kernel → 回第 3 步 |
+| `KeyError: 'OLLAMA_API_KEY'` | 沒跑到貼 key 的那格 → 回 notebook 最上面「檢查 2」那格貼好 key，再從頭一格格跑 |
 | `model not found` | 模型名漏了 cloud tag（要 `gemma4:cloud`） |
-| `401` / 認證失敗 | key 貼錯（前後別留空格、別加引號）→ 回第 3 步 |
+| `401` / 認證失敗 | key 貼錯（前後別留空格）→ 檢查「檢查 2」那格引號中間的 key |
 | 跑很久沒反應 | 雲端要幾秒到十幾秒才回，**不是當掉**；真的太久就重跑那格 |
 | **雲端不通 / 額度用完** | **降本地生成**：先 `ollama pull llama3.2:3b`，再跑 notebook 最後的 Backup 格（品質降，但整個 Lab 照樣做得完） |
 
@@ -126,3 +116,21 @@ jupyter notebook
 | `gemma4:cloud` | 雲端（Ollama Cloud） | **生成回答**（今天的主角） |
 | `bge-m3` | 本機 | 今天不用——**Lab 3** 做 embedding 用 |
 | `llama3.2:3b` | 本機 | 只在雲端不通時當 Backup |
+
+---
+
+## 版本歷史
+
+| 版本 | 日期 | 內容 |
+|---|---|---|
+| v1.0 | 2026-07-14 | 初版。32 cells × 2 版，6 處挖空（挖空點由講師親自標定）。完整版以**真實 API key 實跑**過，輸出為真實結果。**教具已同步至 v2.0。** |
+| v1.1 | 2026-07-14 | **embedding 模型改為 `bge-m3`**（第 2 步、檢查 4、模型表）。Lab 3 實跑證實 `nomic-embed-text` 經 LangChain 呼叫時對中文財報的檢索是壞的（六個不同問題 top-1 全撈回同一塊）。**Lab 2 本身的教學內容一字未動**，只換學員課前要拉的模型。 |
+| v1.2 | 2026-07-16 | **API key 改為 notebook 內直接貼**（教學版＋完整版的「檢查 2」那格 `os.environ["OLLAMA_API_KEY"] = "..."`、Gemini 同款）——學員不必設環境變數。README 第 3 步、啟動說明、排錯表同步。**公開版一律放佔位字串，真 key 絕不進版控。** |
+
+**v1.0 相對於 Lab 2 教具 v1.1 的訂正**——實跑後發現教具有誤，notebook 以實測為準；**教具已於 2026-07-14 同步為 v2.0**（見教具設計筆記）：
+
+1. **拿掉 `temperature` 示範**。實測 `gemma4:cloud` **完全忽略 temperature**（0.0～2.0 輸出都在變、給 `seed` 也一樣），教具 §5-2「溫度差異較細微」的說法不成立。換 `gpt-oss:20b-cloud` 也不行（temp=0 仍不穩，且會吐簡體字）。**溫度概念改由投影片講述，不做上機示範。**
+2. **`num_predict` 從 30 改 20**，並把提問改成「詳細解釋…並舉例」——30 有時剛好收在句號，看不出被截斷。
+3. **幻覺那格問法拿掉年份**（改問「最近一季」）。原本問「2026 Q1」，模型會用「時間還沒到」當理由拒答，失焦；改問法後它穩定回「知識庫中沒有這家公司」，並主動說「可以提供相關文件給我」——正好接到下一格。
+4. **新增「看 token 用量」一格**（`usage_metadata`），並修正教具「token ≈ 可見字數」的說法：實測回答 39 個字只算 28 個 token。
+5. **新增「把資料跟問題一起送」一格**——手工做一次 RAG 的最後一刀，作為 Lab 3 的橋樑。

@@ -35,15 +35,15 @@ ollama pull bge-m3
 
 > ❌ 下載中斷 → 重跑同一行，會續傳。
 
-### 確認 key 還在
+### 準備好你的 key
 
-環境變數**只在當前終端機視窗有效**。中午換過視窗、重開過終端機的話要重設：
+跟 Lab 2 一樣，**不用設環境變數**——notebook 最上面的「檢查 2」那格，把你的 OLLAMA key 直接貼進引號中間即可：
 
-```bash
-export OLLAMA_API_KEY=你的key        # Windows PowerShell：$env:OLLAMA_API_KEY="你的key"
+```python
+os.environ["OLLAMA_API_KEY"] = "在這裡貼上你的 OLLAMA key"   # ← 換成你的 key，再跑這一格
 ```
 
-**設好之後，要從那個視窗啟動 Jupyter**，notebook 才拿得到。
+> ⚠️ 貼了 key 的 notebook 別上傳 GitHub、別傳給別人、別截圖。key 忘了 → 用 Lab 2 那把，或找講師拿共用 key。
 
 ---
 
@@ -62,7 +62,7 @@ jupyter notebook
 
 | 狀況 | 怎麼辦 |
 |---|---|
-| `KeyError: 'OLLAMA_API_KEY'` | key 沒設，或設完沒重開 kernel |
+| `KeyError: 'OLLAMA_API_KEY'` | 沒跑到貼 key 的那格 → 回 notebook「檢查 2」那格貼好 key，再從頭一格格跑 |
 | `model not found` | 生成模型名要帶 cloud tag（`gemma4:cloud`） |
 | 連不上 `localhost:11434` | 本機 Ollama 沒起來 → 開一次 Ollama App，或下 `ollama serve`。**這個紅燈會擋住整個 Lab**（embedding 要靠它） |
 | 建向量庫那格跑很久 | 正常——它要把每一塊都算成向量。這就是「建索引做一次」的那一次 |
@@ -79,3 +79,19 @@ jupyter notebook
 | `bge-m3` | **本機**（不花錢） | 把文字變成 1024 維向量 |
 | `gemma4:cloud` | 雲端（要 key、扣額度） | 看著檢索到的資料寫出答案 |
 | `llama3.2:3b` | 本機 | 只在雲端不通時當 Backup |
+
+---
+
+## 版本歷史
+
+| 版本 | 日期 | 內容 |
+|---|---|---|
+| v1.0 | 2026-07-14 | 初版。完整版以**真實 API key 實跑**過，輸出為真實結果。 |
+| v1.2 | 2026-07-16 | **API key 改為 notebook 內直接貼**（教學版＋完整版「檢查 2」那格 `os.environ["OLLAMA_API_KEY"] = "..."`）——學員不必設環境變數。README「準備 key」段、排錯表同步。公開版一律放佔位字串，真 key 絕不進版控。 |
+
+**v1.0 相對於 Lab 3 教具 v1.2 的訂正**——實跑後發現教具與現實不符，notebook 以實測為準：
+
+1. **embedding 模型從 `nomic-embed-text` 改成 `bge-m3`。** 實測 `nomic-embed-text`（經 LangChain 呼叫、不加官方要求的 `search_query:` / `search_document:` 前綴）對中文財報的檢索是**壞的**——六個完全不同的問題（毛利率／股利／海外設廠／原料漲價…），**top-1 全部撈回同一塊**。改用 `bge-m3` 後檢索正常，且語意相似度的「近／遠」對比乾淨。**教具的環境需求與 code 需同步。**
+2. **示範文件從 3 句短句改成 3 份長文件（約 1,674 字）。** 教具原本的 3 句話，`chunk_size=300` 切下去就是「每句各成一塊」，**`chunk_overlap` 完全看不出作用**。改長之後切出 7 塊，重疊字看得見。
+3. **「拆掉護欄看它亂掰」演不出來，改演「護欄的極限」。** 實測 `gemma4:cloud` 本性老實：資料裡沒有的東西，**沒護欄它也會照實說沒有**。但反過來——**只要問法變成「請算給我看」，帶著護欄它照樣算出資料沒寫的數字**（12.5 ÷ 1.08 ≈ 11.57 億，三次全中）。所以 §G 改成誠實演出這件事：**RAG ＋ 護欄能「降低」幻覺、不能「消除」幻覺，金融場景一定要人工複核。** 教具「那句護欄是抑制幻覺的關鍵」的說法需修正。
+4. **§5-3「有/無 RAG 對照」升級成三欄對照。** 原設計（無 RAG 亂掰 vs 有 RAG 答對）與 Lab 2 收尾的 C1/C2 畫面高度重疊。改成「不給資料 / 全部貼進去 / RAG 檢索 2 塊」三種做法比 **token 用量**，接住 Lab 2 丟出的「1000 份財報總不能全部貼吧？」——實測 35 / 1,361 / 479 tokens，全貼是 RAG 的 **2.8 倍**，而文件才 1,674 字。

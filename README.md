@@ -98,7 +98,7 @@ jupyter notebook
 | 狀況 | 怎麼辦 |
 |---|---|
 | **模型下載很慢 / 拉不動** | 教室網路塞車。**找講師拷貝**（講師有備份），別在那邊乾等 |
-| `KeyError: 'OLLAMA_API_KEY'` | key 沒設，或設完沒重開 kernel。環境變數**只在當前終端機視窗有效** |
+| `KeyError: 'OLLAMA_API_KEY'` | 沒跑到貼 key 的那格 → 回 notebook 最上面「檢查」那格把 key 貼進引號中間，再從頭一格格跑 |
 | `model not found` | 雲端模型名要帶 cloud tag（`gemma4:cloud`） |
 | 連不上 `localhost:11434` | 本機 Ollama 沒跑起來 → 開一次 Ollama App，或下 `ollama serve` |
 | **`faiss-cpu` 裝不起來**（Windows 常見） | 見 Lab 3 的 README，有 chromadb 替代方案 |
