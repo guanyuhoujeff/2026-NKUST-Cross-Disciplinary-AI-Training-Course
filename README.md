@@ -3,6 +3,9 @@
 高雄科技大學「AI 人工智慧大數據分析跨領域人才培訓班」的**上機實作 Notebook**。
 每個 Lab 兩本：**教學版**（關鍵程式碼挖空、照提示自己填）＋ **完整版**（含全部答案，回家複習用）。
 
+> 📌 **本教材作者**：侯冠宇（喬泰資訊 · 邊緣運算電腦總監暨 AI 系統架構師）
+> **有問題、建議或想交流，歡迎聯繫** → 📧 **jeff7522553@gmail.com** ｜ GitHub [@guanyuhoujeff](https://github.com/guanyuhoujeff)
+
 ---
 
 ## 🔌 第一件事：讓機器開始下載（現在就做）
@@ -127,16 +130,6 @@ jupyter notebook
 | 連不上 `localhost:11434` | 本機 Ollama 沒跑起來 → 開一次 Ollama App，或下 `ollama serve` |
 | **`faiss-cpu` 裝不起來**（Windows 常見） | 見 Lab 3 的 README，有 chromadb 替代方案 |
 | **雲端不通 / 額度用完** | 每個 notebook 最後都有 **Backup 格**，改用本機模型跑完（品質降，但流程不斷） |
-
----
-
-## 🙋 關於這個專案
-
-本教材由 **侯冠宇** 製作，為高雄科技大學「2026 暑期新尖兵 · AI 人工智慧大數據分析跨領域人才培訓班」的上機實作 Notebook。
-
-- **作者**：侯冠宇 ｜ 喬泰資訊股份有限公司 · 邊緣運算電腦總監暨 AI 系統架構師
-- **GitHub**：[@guanyuhoujeff](https://github.com/guanyuhoujeff)
-- **有任何問題、建議或想交流，歡迎來信**：📧 **jeff7522553@gmail.com**
 
 ---
 
