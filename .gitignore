@@ -12,3 +12,5 @@ gemini-key
 *-key
 *.key
 .env
+cache/
+**/cache/
