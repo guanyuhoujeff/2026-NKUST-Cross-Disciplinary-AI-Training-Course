@@ -1,0 +1,11 @@
+# 模組 8 財報 RAG：爬蟲抓真財報 → 加工 → 附引用問答、查無拒答
+# 安裝：pip install -r requirements.txt
+
+requests                 # 爬蟲抓富邦財報網頁（big5）
+beautifulsoup4           # 解析財報 HTML 表格（Lab1 學過）
+langchain-ollama         # OllamaEmbeddings（本機算向量）＋ ChatOllama（雲端生成）
+langchain-community      # FAISS 向量庫的 LangChain 包裝
+faiss-cpu                # 向量庫本體
+jupyter                  # notebook 本體
+
+# ⚠️ Windows 上 faiss-cpu 偶爾裝不起來 → 見 README「出事了怎麼辦」的 chromadb 替代方案
