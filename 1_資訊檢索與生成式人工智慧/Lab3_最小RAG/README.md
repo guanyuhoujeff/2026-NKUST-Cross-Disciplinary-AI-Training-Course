@@ -45,6 +45,10 @@ os.environ["OLLAMA_API_KEY"] = "在這裡貼上你的 OLLAMA key"   # ← 換成
 
 > ⚠️ 貼了 key 的 notebook 別上傳 GitHub、別傳給別人、別截圖。key 忘了 → 用 Lab 2 那把，或找講師拿共用 key。
 
+### 別忘了第二把 Gemini key
+
+這門課還要用到**第二把 Gemini key**（Lab 3 本身用不到，但課程其他段落會用）。**課前一起辦好**：到 **https://aistudio.google.com/apikey**，用 Google 帳號登入免費建一把——跟 Lab 2 的 `os.environ["GOOGLE_API_KEY"] = "..."` 同款貼法。詳見 Lab 2 README「第 3.5 步」。
+
 ---
 
 ## ▶️ 開始

@@ -1,0 +1,12 @@
+# Lab 4：多模態 AI（讓模型看圖）
+# 安裝：pip install -r requirements.txt
+# （langchain-ollama / langchain-google-genai 前面 Lab 2 已裝過就不用再裝）
+
+langchain-ollama         # ChatOllama：呼叫開源 minimax（雲端）讀圖
+langchain-google-genai   # ChatGoogleGenerativeAI：呼叫商用 Gemini 讀圖
+langchain-core           # HumanMessage：把「文字＋圖片」包成多模態訊息
+requests                 # 環境自我檢查用
+jupyter                  # notebook 本體
+
+# 圖片已預先放在 data/，本 Lab 不需要 matplotlib（不用自己畫圖）。
+# base64 是 Python 內建，不用另外裝。

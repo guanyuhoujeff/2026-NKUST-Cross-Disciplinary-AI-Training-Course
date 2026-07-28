@@ -62,6 +62,18 @@ os.environ["OLLAMA_API_KEY"] = "在這裡貼上你的 OLLAMA key"   # ← 把引
 > ⚠️ **貼了 key 的 notebook 別上傳 GitHub、別傳給別人、別截圖**——key 等於你帳號的鑰匙。
 > ❌ 註冊不了 / key 貼壞了 → 找講師拿共用 key。
 
+### 第 3.5 步：辦第二把 Gemini key（**課前必辦**，這門課會用到）
+
+除了上面的 Ollama key，**每個人還要辦一把自己的 Gemini key**——到 **https://aistudio.google.com/apikey**，用 **Google 帳號登入**即可**免費**建一把，同樣**先放記事本存著**。等一下在 notebook 最上面的「檢查 2」那格，跟 Ollama key 一起貼進去：
+
+```python
+os.environ["GOOGLE_API_KEY"] = "在這裡貼上你的 Gemini key"   # ← 把引號中間換成你的 key，再跑這一格
+```
+
+> ⚠️ **一人一把自己的 key**，同樣別上傳 GitHub、別截圖。
+> ⚠️ **課前先確認**：極少數帳號辦 Gemini key 時會被要求綁信用卡——**課前先點一次確認拿得到 key**，別留到上課才發現卡關。
+> ❌ 辦不了 → 找講師拿共用 key。
+
 ### 第 4 步：裝套件（**一次裝齊 Lab 2 + Lab 3 要用的**）
 
 ```bash
