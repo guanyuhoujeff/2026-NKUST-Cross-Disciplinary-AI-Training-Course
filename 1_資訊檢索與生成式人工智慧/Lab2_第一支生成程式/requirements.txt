@@ -2,13 +2,13 @@
 # 安裝：pip install -r requirements.txt
 
 # ── Lab 2 今天要用的 ──
-langchain-ollama        # ChatOllama：呼叫 Ollama Cloud 生成
-langchain-google-genai  # ChatGoogleGenerativeAI：呼叫 Gemini（課前必辦第二把 key，https://aistudio.google.com/apikey 免費）
+langchain-ollama==1.0.1        # ChatOllama：呼叫 Ollama Cloud 生成
+langchain-google-genai==4.2.7  # ChatGoogleGenerativeAI：呼叫 Gemini（課前必辦第二把 key，https://aistudio.google.com/apikey 免費）
 requests                # 環境自我檢查（打 localhost:11434 看服務通不通）
 jupyter                 # notebook 本體
 
 # ── Lab 3 才會用到，趁現在一起裝好（下午不用再等）──
-langchain-community     # FAISS 向量庫的 LangChain 包裝
-langchain-text-splitters # 把長文件切塊
-faiss-cpu               # 向量庫本體
+langchain-community==0.4.2     # FAISS 向量庫的 LangChain 包裝
+langchain-text-splitters==1.1.2 # 把長文件切塊
+faiss-cpu==1.14.2               # 向量庫本體
 # ⚠️ Windows 上 faiss-cpu 偶爾裝不起來 → Lab 2 不受影響，Lab 3 前再處理

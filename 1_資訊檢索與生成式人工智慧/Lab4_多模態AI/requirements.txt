@@ -2,9 +2,9 @@
 # 安裝：pip install -r requirements.txt
 # （langchain-ollama / langchain-google-genai 前面 Lab 2 已裝過就不用再裝）
 
-langchain-ollama         # ChatOllama：呼叫開源 minimax（雲端）讀圖
-langchain-google-genai   # ChatGoogleGenerativeAI：呼叫商用 Gemini 讀圖
-langchain-core           # HumanMessage：把「文字＋圖片」包成多模態訊息
+langchain-ollama==1.0.1         # ChatOllama：呼叫開源 minimax（雲端）讀圖
+langchain-google-genai==4.2.7   # ChatGoogleGenerativeAI：呼叫商用 Gemini 讀圖
+langchain-core==1.4.9           # HumanMessage：把「文字＋圖片」包成多模態訊息
 requests                 # 環境自我檢查用
 jupyter                  # notebook 本體
 
