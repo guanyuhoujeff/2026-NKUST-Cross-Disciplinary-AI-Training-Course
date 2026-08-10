@@ -1,4 +1,4 @@
-# 模組 8 財報 RAG：爬蟲抓真財報 → 加工 → 附引用問答、查無拒答
+# 模組 6 財報 RAG：爬蟲抓真財報 → 加工 → 附引用問答、查無拒答
 
 課程 1 Lab3 做過「最小 RAG」，今天升級成**對真實財報問答**：用爬蟲（Lab1 那招）抓台積電（2330）的財報網頁 → **加工成乾淨記錄** → RAG 附【資料n】出處回答、查不到就拒答不瞎掰。核心是「引用溯源 + 兩道防線拒答 + 數字雙保險」。
 
@@ -6,7 +6,7 @@
 
 ```bash
 pip install -r requirements.txt
-jupyter notebook Lab7_財報RAG_教學版.ipynb
+jupyter notebook Lab6_財報RAG_教學版.ipynb
 ```
 
 或直接在 notebook 裡跑第一格的 `!pip install`。
@@ -15,8 +15,8 @@ jupyter notebook Lab7_財報RAG_教學版.ipynb
 
 | 檔案 | 用途 |
 |---|---|
-| `Lab7_財報RAG_教學版.ipynb` | 課堂用，引導式填空 |
-| `Lab7_財報RAG_完整版.ipynb` | 回家複習，含全部解答與執行結果 |
+| `Lab6_財報RAG_教學版.ipynb` | 課堂用，引導式填空 |
+| `Lab6_財報RAG_完整版.ipynb` | 回家複習，含全部解答與執行結果 |
 | `data/zcq_2330.html` | 老師預存的綜合損益表 HTML（爬蟲被擋時的 Backup） |
 | `data/zcr_2330.html` | 老師預存的財務比率表 HTML（Backup） |
 

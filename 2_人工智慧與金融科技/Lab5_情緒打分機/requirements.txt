@@ -1,2 +1,2 @@
-langchain-ollama
-pandas
+langchain-ollama==1.0.1
+pandas==2.2.3
